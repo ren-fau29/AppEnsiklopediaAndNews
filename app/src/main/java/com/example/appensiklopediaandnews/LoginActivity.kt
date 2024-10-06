@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,15 @@ class LoginActivity : AppCompatActivity() {
         usernameInput = findViewById(R.id.login_username)
         passwordInput = findViewById(R.id.login_password)
         loginButton = findViewById(R.id.login_button)
+
+        val signupRedirectText = findViewById<TextView>(R.id.signupRedirectText)
+        // Set click listener for signupRedirectText
+        signupRedirectText.setOnClickListener {
+            // Berpindah ke SignUpActivity
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
 
         loginButton.setOnClickListener {
             val username = usernameInput.text.toString()

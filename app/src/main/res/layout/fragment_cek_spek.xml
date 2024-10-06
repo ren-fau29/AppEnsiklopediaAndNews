@@ -3,21 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CekSpekFragment"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_txt_game"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical">
+        android:text="What's Your Game"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World"
-            android:textSize="50dp"
-            android:textColor="@color/purple_700"/>
+    <!-- Spinner for selecting game -->
+    <TextView
+        android:id="@+id/tv_select_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Game:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
 
-    </LinearLayout>
+    <Spinner
+        android:id="@+id/spinner_games"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_txt_pc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What's Your PC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Input for processor -->
+    <TextView
+        android:id="@+id/tv_processor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Processor:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
+
+    <Spinner
+        android:id="@+id/et_processor"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Enter your processor"
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Input for GPU -->
+    <TextView
+        android:id="@+id/tv_gpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Graphics Card:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
+
+    <Spinner
+        android:id="@+id/et_gpu"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Enter your GPU"
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Input for RAM -->
+    <TextView
+        android:id="@+id/tv_ram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RAM (GB):"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        tools:ignore="HardcodedText" />
+
+    <Spinner
+        android:id="@+id/et_ram"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:hint="Enter your RAM"
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Button to match components -->
+    <Button
+        android:id="@+id/btn_match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match"
+        android:backgroundTint="@color/purple_700"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

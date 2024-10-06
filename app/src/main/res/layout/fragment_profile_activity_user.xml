@@ -199,18 +199,18 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:id="@+id/editButton"
-        android:gravity="center"
-        android:text="Edit Profile"
-        android:textSize="18sp"
-        app:cornerRadius = "20dp"
-        android:backgroundTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="@id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+<!--    <Button-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:id="@+id/editButton"-->
+<!--        android:gravity="center"-->
+<!--        android:text="Edit Profile"-->
+<!--        android:textSize="18sp"-->
+<!--        app:cornerRadius = "20dp"-->
+<!--        android:backgroundTint="@color/purple_700"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/linearLayout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/linearLayout"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

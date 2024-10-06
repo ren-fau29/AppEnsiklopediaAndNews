@@ -1,59 +1,122 @@
 package com.example.appensiklopediaandnews
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CekSpekFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class CekSpekFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class CekSpekFragment : Fragment(R.layout.fragment_cek_spek) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var gamesSpinner: Spinner
+    private lateinit var processorSpinner: Spinner
+    private lateinit var gpuSpinner: Spinner
+    private lateinit var ramSpinner: Spinner
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize Firestore
+        firestore = FirebaseFirestore.getInstance()
+
+        // Initialize Spinners
+        gamesSpinner = view.findViewById(R.id.spinner_games)
+        processorSpinner = view.findViewById(R.id.et_processor)
+        gpuSpinner = view.findViewById(R.id.et_gpu)
+        ramSpinner = view.findViewById(R.id.et_ram)
+
+        // Fetch data for games and PCs from Firestore
+        loadGames()
+        loadPC_Cpu()
+        loadPC_Gpu()
+        loadPC_Ram()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cek_spek, container, false)
-    }
+    private fun loadGames() {
+        firestore.collection("games")
+            .get()
+            .addOnSuccessListener { result ->
+                val gamesList = mutableListOf<String>()
+                for (document in result) {
+                    val gameName = document.getString("title")
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CekSpekFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CekSpekFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    gameName?.let { gamesList.add(it) }
                 }
+                // Set up processors spinner
+                val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, gamesList)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                gamesSpinner.adapter = adapter
+            }
+            .addOnFailureListener {
+                // Handle the error
+            }
+    }
+
+    private fun loadPC_Cpu() {
+        firestore.collection("pcs_cpu")
+            .get()
+            .addOnSuccessListener { result ->
+                val processorList = mutableListOf<String>()
+
+                for (document in result) {
+                    val processor = document.getString("processor")
+
+                    processor?.let { processorList.add(it) }
+                }
+                // Set up processors spinner
+                val processorAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, processorList)
+                processorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                processorSpinner.adapter = processorAdapter
+            }
+            .addOnFailureListener {
+                // Handle the error
+            }
+    }
+
+    private fun loadPC_Gpu() {
+        firestore.collection("pcs_vga")
+            .get()
+            .addOnSuccessListener { result ->
+                val gpuList = mutableListOf<String>()
+                for (document in result) {
+                    val gpu = document.getString("gpu")
+
+                    gpu?.let { gpuList.add(it) }
+                }
+                // Set up GPU spinner
+                val gpuAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, gpuList)
+                gpuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                gpuSpinner.adapter = gpuAdapter
+            }
+            .addOnFailureListener {
+                // Handle the error
+            }
+    }
+
+    private fun loadPC_Ram() {
+        firestore.collection("pcs_ram")
+            .get()
+            .addOnSuccessListener { result ->
+                val ramList = mutableListOf<String>()
+                for (document in result) {
+                    val ram = document.getString("ram")
+
+                    ram?.let { ramList.add(it) }
+                }
+                // Set up RAM spinner
+                val ramAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, ramList)
+                ramAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                ramSpinner.adapter = ramAdapter
+            }
+            .addOnFailureListener {
+                // Handle the error
             }
     }
 }

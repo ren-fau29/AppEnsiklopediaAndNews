@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .replace(R.id.fragment_container, CekSpekFragment()).commit()
             R.id.nav_profile -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, ProfileActivityUser()).commit()
+            R.id.nav_search -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, SearchFragment()).commit()
             R.id.nav_settings -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, SettingsFragment()).commit()
             R.id.nav_share -> supportFragmentManager.beginTransaction()
