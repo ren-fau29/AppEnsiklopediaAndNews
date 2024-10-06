@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "189531156880",
+    "project_id": "app-ensi-and-news",
+    "storage_bucket": "app-ensi-and-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189531156880:android:eabce432c6112e30c6c315",
+        "android_client_info": {
+          "package_name": "com.example.appensiklopediaandnews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1-JHARLWay2wtKoy30JR1XjwJrqafDG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
