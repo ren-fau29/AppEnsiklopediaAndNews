@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -31,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        tools:ignore="HardcodedText"/>
     <TextView
         android:id="@+id/detailDescription"
         android:layout_width="match_parent"
@@ -42,7 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Genre"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        tools:ignore="HardcodedText" />
     <TextView
         android:id="@+id/genre"
         android:layout_width="match_parent"
@@ -53,70 +56,81 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Spesifikasi Minimum"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/detailCPU_mi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_computer_24"/>
+        android:drawableStart="@drawable/baseline_computer_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
     <TextView
         android:id="@+id/detailVGA_mi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_videogame_asset_24"/>
+        android:drawableStart="@drawable/baseline_videogame_asset_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
     <TextView
         android:id="@+id/detailRAM_mi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_memory_24"/>
+        android:drawableStart="@drawable/baseline_memory_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
     <TextView
         android:id="@+id/detailStorage_mi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_storage_24"/>
+        android:drawableStart="@drawable/baseline_storage_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Spesifikasi Rekomended"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/detailCPU_Re"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_computer_24"/>
+        android:drawableStart="@drawable/baseline_computer_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
     <TextView
         android:id="@+id/detailVGA_Re"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_videogame_asset_24"/>
+        android:drawableStart="@drawable/baseline_videogame_asset_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
     <TextView
         android:id="@+id/detailRAM_Re"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_memory_24"/>
+        android:drawableStart="@drawable/baseline_memory_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
     <TextView
         android:id="@+id/detailStorage_Re"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
-        android:drawableLeft="@drawable/baseline_storage_24"/>
+        android:drawableStart="@drawable/baseline_storage_24"
+        tools:ignore="UseCompatTextViewDrawableXml" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buy a Game"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        tools:ignore="HardcodedText" />
     <TextView
         android:id="@+id/detailNewsUrl"
         android:layout_width="match_parent"
