@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppEnsiklopediaAndNews"
         tools:targetApi="33">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

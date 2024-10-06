@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appensiklopediaandnews.adapter.GameAdapter
 import com.example.appensiklopediaandnews.model.Game
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import java.io.Serializable
@@ -22,6 +23,7 @@ class LibraryFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: GameAdapter
+    private lateinit var progressBar: LinearProgressIndicator
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +41,7 @@ class LibraryFragment : Fragment() {
 
         adapter = GameAdapter(emptyList())
         recyclerView.adapter = adapter
+        progressBar = view.findViewById(R.id.w_loading)
 
         // Ambil data dari Firestore
         val db = FirebaseFirestore.getInstance()
@@ -60,6 +63,7 @@ class LibraryFragment : Fragment() {
 
                 Game(image, title, genre, description, cpuMi, vgaMi, ramMi, storageMi, cpuRe, vgaRe, ramRe, storageRe, newsUrl)
             }
+            progressBar.visibility = View.GONE
 
             // Set item click listener untuk setiap item game
             adapter.setOnItemClickListener(object : GameAdapter.OnItemClickListener {

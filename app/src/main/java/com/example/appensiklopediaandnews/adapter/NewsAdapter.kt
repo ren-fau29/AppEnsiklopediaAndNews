@@ -20,7 +20,7 @@ class NewsAdapter(private val newsList: List<Article>) :
         val image: ImageView = itemView.findViewById(R.id.newsImage)
         val title: TextView = itemView.findViewById(R.id.newsTitle)
         val source: TextView = itemView.findViewById(R.id.newsSource)
-        val time: TextView = itemView.findViewById(R.id.newsTime)
+//        val time: TextView = itemView.findViewById(R.id.newsTime)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -40,7 +40,7 @@ class NewsAdapter(private val newsList: List<Article>) :
 
         holder.title.text = news.title
         holder.source.text = news.source.name
-        holder.time.text = formatTimeAgo(news.publishedAt)
+//        holder.time.text = formatTimeAgo(news.publishedAt)
 
         // Set OnClickListener untuk setiap item
         holder.itemView.setOnClickListener {

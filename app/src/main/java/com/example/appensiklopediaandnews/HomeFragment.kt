@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appensiklopediaandnews.adapter.NewsAdapter
 import com.example.appensiklopediaandnews.api.NewsApiService
 import com.example.appensiklopediaandnews.model.NewsResponse
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -25,6 +26,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var newsApiService: NewsApiService
+
+    private lateinit var progressBar: LinearProgressIndicator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,7 @@ class HomeFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.RecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
+        progressBar = view.findViewById(R.id.w_loading)
 
         val dividerItemDecoration = DividerItemDecoration(
             recyclerView.context,
@@ -64,6 +68,7 @@ class HomeFragment : Fragment() {
         call.enqueue(object : retrofit2.Callback<NewsResponse> {
             override fun onFailure(call: retrofit2.Call<NewsResponse>, t: Throwable) {
                 Log.e("NewsFragment", "Gagal mendapatkan berita", t)
+                progressBar.visibility = View.GONE
             }
 
             override fun onResponse(
@@ -79,12 +84,15 @@ class HomeFragment : Fragment() {
                         newsAdapter = NewsAdapter(filteredArticles)
                         recyclerView.adapter = newsAdapter
                     }
+                    progressBar.visibility = View.GONE
                 } else {
                     Log.e("NewsFragment", "Gagal mendapatkan berita")
+                    progressBar.visibility = View.GONE
                 }
             }
         })
 
+        progressBar.visibility = View.VISIBLE
         return view
     }
 }
