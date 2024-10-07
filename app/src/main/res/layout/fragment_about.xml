@@ -1,17 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutFragment">
+    android:padding="16dp"
+    android:background="@android:color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About Us Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/lavender"/>
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!-- Title Section -->
+        <TextView
+            android:id="@+id/tvAboutUsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingBottom="24dp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Our Mission Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/purple_700"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvMissionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OUR MISSION"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvMissionDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI."
+                android:textColor="@android:color/white"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!-- Our Vision Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvVisionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OUR VISION"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/ivVisionImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/sample_vision_image"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvVisionDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions."
+                android:padding="16dp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!-- Our Values Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tvValuesTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OUR VALUES"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tvValuesDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Collaboratively administrate empowered markets via plug-and-play networks.\n• Dynamically procrastinate B2C users after installed base benefits.\n• Efficiently unleash cross-media information without cross-media value.\n• Quickly maximize timely deliverables for real-time schemas."
+                android:paddingTop="8dp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!-- Team Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            tools:ignore="DisableBaselineAlignment">
+
+            <!-- Person 1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/ivPerson1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/persone1"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvPerson1Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Renaldi Fauzi Adnan"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvPerson1Role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CEO"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- Person 2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/ivPerson2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/baseline_person_24"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvPerson2Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Janet Williams"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvPerson2Role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COO"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- Person 3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/ivPerson3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/baseline_person_24"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvPerson3Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Louis Smith John"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvPerson3Role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CTO"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- Person 4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/ivPerson4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/baseline_person_24"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvPerson4Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grazie Dunbar"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvPerson4Role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CFO"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

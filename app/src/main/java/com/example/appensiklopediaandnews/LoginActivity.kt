@@ -1,5 +1,6 @@
 package com.example.appensiklopediaandnews
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -21,6 +22,18 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Cek status login
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (isLoggedIn) {
+            // Jika sudah login, langsung pindah ke MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_login)
 
         // Initialize Firestore
@@ -52,36 +65,41 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun loginUser(username: String, password: String) {
-        // Access Firestore "users" collection
+    private fun loginUser (username: String, password: String) {
         val usersCollection = firestore.collection("users")
-
-        // Query Firestore to find matching username
         usersCollection.whereEqualTo("username", username).get()
             .addOnSuccessListener { documents ->
                 if (!documents.isEmpty) {
                     val userDoc = documents.first()
                     val storedPassword = userDoc.getString("password")
                     if (storedPassword == password) {
+                        // Simpan status login di SharedPreferences
+                        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putBoolean("isLoggedIn", true)
+                        editor.putString("name", userDoc.getString("name"))
+                        editor.putString("email", userDoc.getString("email"))
+                        editor.putString("username", userDoc.getString("username"))
+                        editor.putString("password", userDoc.getString("password"))
+                        editor.apply()
+
                         // Login success, move to MainActivity
                         val intent = Intent(this, MainActivity::class.java)
-                        // Pass user data to next activity
                         intent.putExtra("name", userDoc.getString("name"))
                         intent.putExtra("email", userDoc.getString("email"))
                         intent.putExtra("username", userDoc.getString("username"))
                         intent.putExtra("password", userDoc.getString("password"))
                         startActivity(intent)
-                        finish() // close LoginActivity
+                        finish()
                     } else {
                         Toast.makeText(this, "Invalid password", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "User  not found", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
             }
-
     }
 }

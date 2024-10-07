@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send a Bug Report"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/etBugReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write your message here. Please include 10 Characters."
+        android:minHeight="100dp"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp"
+        android:gravity="top"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnSendReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Report"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/purple_700"
+        android:textColor="@android:color/white" />
+</LinearLayout>
