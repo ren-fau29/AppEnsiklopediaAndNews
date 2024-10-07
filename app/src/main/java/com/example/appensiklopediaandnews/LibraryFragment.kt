@@ -47,10 +47,10 @@ class LibraryFragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
         db.collection("games").get().addOnSuccessListener { documents ->
             val games = documents.documents.map { document ->
-                val image = document.getString("image") ?: ""
                 val title = document.getString("title") ?: ""
                 val genre = document.getString("genre") ?: ""
                 val description = document.getString("description") ?: ""
+                val image = document.getString("image") ?: ""
                 val cpuMi = document.getString("cpuMi") ?: ""
                 val vgaMi = document.getString("vgaMi") ?: ""
                 val ramMi = document.getString("ramMi") ?: ""

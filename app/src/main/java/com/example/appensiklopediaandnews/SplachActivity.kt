@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SplachActivity : AppCompatActivity() {
 
-    private val SPLASH_TIME_OUT : Long = 3000
+    private val SPLASH_TIME_OUT : Long = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ class SplachActivity : AppCompatActivity() {
 
 
         Handler().postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, SPLASH_TIME_OUT)
     }

@@ -13,5 +13,6 @@ data class Game(
     val vgaRe: String, // Tambahkan field vgaRe
     val ramRe: String, // Tambahkan field ramRe
     val storageRe: String, // Tambahkan field storageRe
-    val newsUrl: String // T
+    val newsUrl: String, // Tambahkan field newsUrl
+
 )
