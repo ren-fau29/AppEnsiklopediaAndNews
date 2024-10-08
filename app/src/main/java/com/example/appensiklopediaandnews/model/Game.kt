@@ -4,15 +4,32 @@ data class Game(
     val image: String = "",
     val title: String = "",
     val genre: String = "",
-    val description: String, // Tambahkan field description
-    val cpuMi: String, // Tambahkan field cpuMi
-    val vgaMi: String, // Tambahkan field vgaMi
-    val ramMi: String, // Tambahkan field ramMi
-    val storageMi: String, // Tambahkan field storageMi
-    val cpuRe: String, // Tambahkan field cpuRe
-    val vgaRe: String, // Tambahkan field vgaRe
-    val ramRe: String, // Tambahkan field ramRe
-    val storageRe: String, // Tambahkan field storageRe
-    val newsUrl: String, // Tambahkan field newsUrl
+    val description: String = "", // Tambahkan nilai default
+    val cpuMi: String = "", // Tambahkan nilai default
+    val vgaMi: String = "", // Tambahkan nilai default
+    val ramMi: String = "", // Tambahkan nilai default
+    val storageMi: String = "", // Tambahkan nilai default
+    val cpuRe: String = "", // Tambahkan nilai default
+    val vgaRe: String = "", // Tambahkan nilai default
+    val ramRe: String = "", // Tambahkan nilai default
+    val storageRe: String = "", // Tambahkan nilai default
+    val newsUrl: String = "" // Tambahkan nilai default
 
-)
+){
+    // Tambahkan constructor tanpa argumen (no-arg constructor)
+    constructor() : this(
+        image = "",
+        title = "",
+        genre = "",
+        description = "",
+        cpuMi = "",
+        vgaMi = "",
+        ramMi = "",
+        storageMi = "",
+        cpuRe = "",
+        vgaRe = "",
+        ramRe = "",
+        storageRe = "",
+        newsUrl = ""
+    )
+}

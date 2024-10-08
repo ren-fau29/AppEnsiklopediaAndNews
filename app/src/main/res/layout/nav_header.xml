@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="176dp"
@@ -12,22 +13,25 @@
     <ImageView
         android:layout_width="111dp"
         android:layout_height="63dp"
-        android:src="@drawable/icon_app" />
+        android:src="@drawable/icon_app"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gamer Enjoyer"
+        android:text="Gamer Enjoyed"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/name_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You Never Konow If not Try"
+        android:text="You Never Know If not Try"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

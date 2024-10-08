@@ -109,4 +109,16 @@
         android:layout_gravity="center_horizontal"
         tools:ignore="HardcodedText" />
 
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:text="Hasil perhitungan akan muncul di sini."
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="HardcodedText,SpUsage" />
+
+
 </LinearLayout>

@@ -22,7 +22,7 @@ class ProfileActivityUser : Fragment(R.layout.fragment_profile_activity_user) {
         val profileUsername: TextView = view.findViewById(R.id.profileUsername)
         val titleUsername: TextView = view.findViewById(R.id.titleUsername)
 
-        val profilePassword: TextView = view.findViewById(R.id.profilePassword)
+//        val profilePassword: TextView = view.findViewById(R.id.profilePassword)
 
 //        // Retrieve data from Intent
 //        val name = activity?.intent?.getStringExtra("name")
@@ -43,7 +43,7 @@ class ProfileActivityUser : Fragment(R.layout.fragment_profile_activity_user) {
         profileEmail.text = email
         profileUsername.text = username
         titleUsername.text = username
-        profilePassword.text = password
+//        profilePassword.text = password
     }
 
 
