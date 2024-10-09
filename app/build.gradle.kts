@@ -48,6 +48,8 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.1")
     implementation("com.google.firebase:firebase-firestore:25.1.0")
+    implementation ("com.google.firebase:firebase-auth-ktx:22.0.0")
+//    implementation ("com.google.firebase:firebase-firestore-ktx:24.0.0")
     implementation("androidx.annotation:annotation:1.6.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")

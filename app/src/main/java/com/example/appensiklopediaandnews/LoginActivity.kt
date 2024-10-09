@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
@@ -18,10 +19,12 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var usernameInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var loginButton: Button
+    private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         // Cek status login
         val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
@@ -36,7 +39,8 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
-        // Initialize Firestore
+        // Initialize Firebase Auth dan Firestore
+        auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
         // Bind views
@@ -52,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+        // Handle login button click
         loginButton.setOnClickListener {
             val username = usernameInput.text.toString()
             val password = passwordInput.text.toString()
@@ -65,37 +69,45 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun loginUser (username: String, password: String) {
+    private fun loginUser(username: String, password: String) {
+        // Pertama kita cari user berdasarkan username di Firestore
         val usersCollection = firestore.collection("users")
         usersCollection.whereEqualTo("username", username).get()
             .addOnSuccessListener { documents ->
                 if (!documents.isEmpty) {
                     val userDoc = documents.first()
-                    val storedPassword = userDoc.getString("password")
-                    if (storedPassword == password) {
-                        // Simpan status login di SharedPreferences
-                        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-                        val editor = sharedPreferences.edit()
-                        editor.putBoolean("isLoggedIn", true)
-                        editor.putString("name", userDoc.getString("name"))
-                        editor.putString("email", userDoc.getString("email"))
-                        editor.putString("username", userDoc.getString("username"))
-                        editor.putString("password", userDoc.getString("password"))
-                        editor.apply()
+                    val email = userDoc.getString("email")
 
-                        // Login success, move to MainActivity
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra("name", userDoc.getString("name"))
-                        intent.putExtra("email", userDoc.getString("email"))
-                        intent.putExtra("username", userDoc.getString("username"))
-                        intent.putExtra("password", userDoc.getString("password"))
-                        startActivity(intent)
-                        finish()
+                    // Jika user ditemukan, lakukan login dengan email dan password menggunakan FirebaseAuth
+                    if (email != null) {
+                        auth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    // Simpan status login di SharedPreferences
+                                    val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+                                    val editor = sharedPreferences.edit()
+                                    editor.putBoolean("isLoggedIn", true)
+                                    editor.putString("name", userDoc.getString("name"))
+                                    editor.putString("email", userDoc.getString("email"))
+                                    editor.putString("username", userDoc.getString("username"))
+                                    editor.apply()
+
+                                    // Login success, move to MainActivity
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    intent.putExtra("name", userDoc.getString("name"))
+                                    intent.putExtra("email", userDoc.getString("email"))
+                                    intent.putExtra("username", userDoc.getString("username"))
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
                     } else {
-                        Toast.makeText(this, "Invalid password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Email not found for the given username", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this, "User  not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {

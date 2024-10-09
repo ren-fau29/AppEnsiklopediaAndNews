@@ -32,7 +32,8 @@
 
     <item
         android:checkableBehavior="single"
-        android:title="">
+        android:title="Communicate"
+        tools:ignore="HardcodedText">
 
         <menu>
 

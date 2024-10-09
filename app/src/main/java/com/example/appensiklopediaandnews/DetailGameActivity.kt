@@ -15,10 +15,6 @@ class DetailGameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_game)
         val images = intent.getStringArrayListExtra("IMAGES") ?: listOf()
 
-//        val viewPager = findViewById<ViewPager2>(R.id.viewPager)
-//        val adapter = ImageSliderAdapter(images)
-//        viewPager.adapter = adapter
-
         val image = intent.getStringExtra("IMAGE")
         val title = intent.getStringExtra("TITLE")
         val description = intent.getStringExtra("DESCRIPTION")
