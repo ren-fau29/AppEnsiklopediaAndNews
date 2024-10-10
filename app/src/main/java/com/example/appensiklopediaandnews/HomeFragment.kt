@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
         newsApiService = retrofit.create(NewsApiService::class.java)
 
         // Lakukan request untuk mendapatkan berita
-        val apiKey = "2afa48928646498cad35302e0a795575" // Ganti dengan API Key Anda
+        val apiKey = "" // Ganti dengan API Key Anda
         val call = newsApiService.getGameNews(apiKey = apiKey)
 
         call.enqueue(object : retrofit2.Callback<NewsResponse> {
